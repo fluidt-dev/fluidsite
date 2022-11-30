@@ -1,8 +1,0 @@
-# An employee record
-data:
-  title: Hello Tester
-  subTitle: This is just an example page
-  image: https://picsum.photos/350/165?random
-  body: \n
-    <p>A new <strong>Test</strong> like mr pibb </p>
-  featured: false  
