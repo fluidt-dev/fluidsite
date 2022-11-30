@@ -13,10 +13,14 @@ const main = useMainStore()
         <v-icon icon="mdi-water" color="blue" />fluidt.dev
       </v-app-bar-title>
       <v-btn to="/">
-        <v-icon icon="mdi-home" />Home
+        <v-icon icon="mdi-home" />&nbsp;Home
       </v-btn>
-      <v-btn to="/about">About</v-btn>
-      <v-btn to="/page/test">Test</v-btn>
+      <v-btn to="/about">
+        <v-icon icon="mdi-information" />&nbsp;About
+      </v-btn>
+      <v-btn to="/page/virtscape">
+        <v-icon icon="mdi-cube" color="orange"/>&nbsp;Virtscape
+      </v-btn>
       <v-spacer></v-spacer>
       <SettingsMenu />
     </v-app-bar>
