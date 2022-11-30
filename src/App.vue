@@ -1,16 +1,13 @@
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
-import { ref } from 'vue'
+import { RouterView } from "vue-router";
+import { useMainStore } from '@/stores/main'
+import SettingsMenu from '@/components/SettingsMenu.vue'
 
-const theme = ref('dark')
-
-function onClick() {
-  theme.value = theme.value === 'dark' ? 'light' : 'dark'
-}
+const main = useMainStore()
 </script>
 
 <template>
-  <v-app :theme="theme">
+  <v-app :theme="main.theme">
     <v-app-bar>
       <v-app-bar-title>
         <v-icon icon="mdi-water" color="blue" />fluidt.dev
@@ -19,15 +16,23 @@ function onClick() {
         <v-icon icon="mdi-home" />Home
       </v-btn>
       <v-btn to="/about">About</v-btn>
+      <v-btn to="/page/test">Test</v-btn>
       <v-spacer></v-spacer>
-
-      <v-btn :prepend-icon="theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'" @click="onClick">Toggle Theme
-      </v-btn>
+      <SettingsMenu />
     </v-app-bar>
 
     <v-main>
       <RouterView />
     </v-main>
+
+    <v-footer padless>
+    <v-col
+      class="text-center"
+      cols="12"
+    >
+      &copy; {{ new Date().getFullYear() }}  <strong>fluidt.dev</strong>
+    </v-col>
+  </v-footer>
   </v-app>
 </template>
 
