@@ -7,7 +7,7 @@
             About Us
           </v-card-title>
           <v-card-text>
-            We are a small development studio specializing in Cloud Architecture Management and Design.
+            We like to design software that flows. We use the latest technologies when it comes to building our software.
           </v-card-text>
         </v-card>
       </v-col>

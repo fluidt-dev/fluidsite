@@ -8,17 +8,7 @@ export default {
     data: () => ({
         theme: "dark",
         menu: false,
-        snowEnable: true,
-        snowStick: true,
     }),
-    watch: {
-        snowEnable() {
-            snowStorm.toggleSnow();
-        },
-        snowStick(val) {
-            snowStorm.snowStick = val;
-        },
-    },
 }
 </script>
 <template>
@@ -42,18 +32,6 @@ export default {
                         <template v-slot:append>
                             <ThemeButton />
                         </template>
-                    </v-list-item>
-                </v-list>
-
-                <v-divider></v-divider>
-
-                <v-list>
-                    <v-list-item>
-                        <v-switch v-model="snowEnable" color="blue" label="Snow Enabled" hide-details></v-switch>
-                    </v-list-item>
-
-                    <v-list-item>
-                        <v-switch v-model="snowStick" color="blue" label="Snow Stick" hide-details></v-switch>
                     </v-list-item>
                 </v-list>
             </v-card>

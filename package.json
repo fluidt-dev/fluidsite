@@ -5,7 +5,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "deploy": "npm run build && rm -rf ../fluidt/assets && cp -r dist/* ../fluidt/. && cd ../fluidt && git add . && git commit -m \"Deploy site\" && git push"
   },
   "dependencies": {
     "material-design-icons-iconfont": "^6.7.0",

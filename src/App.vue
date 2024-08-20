@@ -18,9 +18,6 @@ const main = useMainStore()
       <v-btn to="/about">
         <v-icon icon="mdi-information" />&nbsp;About
       </v-btn>
-      <v-btn to="/page/virtscape">
-        <v-icon icon="mdi-cube" color="orange"/>&nbsp;Virtscape
-      </v-btn>
       <v-spacer></v-spacer>
       <SettingsMenu />
     </v-app-bar>

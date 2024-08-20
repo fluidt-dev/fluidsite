@@ -3,7 +3,7 @@ export default {
     name: "SnowStorm",
     data() {
         return {
-            snowEnable: true,
+            snowEnable: false,
             snowStick: true,
             flakesMax: 128,
             flakesMaxActive: 64,

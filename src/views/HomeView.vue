@@ -3,7 +3,7 @@
 import SshPre from 'simple-syntax-highlighter'
 import 'simple-syntax-highlighter/dist/sshpre.css'
 import InfoCard from '@/components/InfoCard.vue'
-import SnowStorm from '@/components/SnowStorm.vue'
+import DaysUntil from '../components/DaysUntil.vue'
 import { mapStores, mapState } from 'pinia'
 import { useMainStore } from '@/stores/main'
 
@@ -14,7 +14,6 @@ export default {
   components: {
     SshPre,
     InfoCard,
-    SnowStorm,
   },
   data() {
     return {
@@ -26,14 +25,15 @@ export default {
           content: '<div>Development Never Stops</div><div></div>It flows around the need of the business'
         },
         {
-          title: 'Virtscape building a better future',
-          subTitle: 'Manage your virtual enviornments',
-          image:'https://img.freepik.com/premium-photo/abstract-cube-background-construction-block-background_1962-1829.jpg',
-          content:'<p>Easily Manage, and migrate your applications with a click of the button using Virtscape.</p>'
-        }
+          title: 'Latest Works',
+          subTitle: 'A gaming server caching socket.',
+          image: 'https://img.freepik.com/premium-photo/abstract-cube-background-construction-block-background_1962-1829.jpg',
+          content: '<div>Gaming is fun!</div><div></div>Currently we are working on creating generic game server which reports player location and stats securely.'
+        },
       ],
       tab: null,
-      input: ""
+      input: "",
+      inputPreti: "",
     }
   },
   computed: {
@@ -45,6 +45,9 @@ export default {
       } catch (e) {
         return "No JSON to Output";
       }
+    },
+    outputPreti() {
+      return JSON.stringify(this.inputPreti,null, 4)
     },
     store() {
       return { theme: "dark" }
@@ -64,22 +67,18 @@ export default {
       </h4>
     </div>
   </v-parallax>
+  <v-container fluid>
+    <v-row>
+      <v-col>
+        <DaysUntil />
+      </v-col>
+    </v-row>
+  </v-container>
   <v-tabs v-model="tab" center-active>
-    <v-tab value="news">News</v-tab>
     <v-tab value="tools">Tools</v-tab>
+    <v-tab value="news">News</v-tab>
   </v-tabs>
   <v-window v-model="tab">
-    <v-window-item value="news">
-      <v-container fluid>
-        <v-row>
-          <v-col v-for="item in news" :key="item.title">
-            <InfoCard :title="item.title" :subTitle="item.subTitle" :image="item.image" :content="item.content">
-            </InfoCard>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-window-item>
-
     <v-window-item value="tools">
       <v-container fluid>
         <v-card>
@@ -98,8 +97,34 @@ export default {
             </v-row>
           </v-container>
         </v-card>
-        <SnowStorm></SnowStorm>     
+        <v-card>
+          <v-toolbar title="JSON Stringifier" color="blue darken-2">
+          </v-toolbar>
+          <v-container>
+            <v-row>
+              <v-col>
+                <v-textarea v-model="inputPreti" label="JSON"></v-textarea>
+              </v-col>
+              <v-col>
+                <ssh-pre reactive :dark="theme == 'dark'" copy-button language="json">
+                  {{ outputPreti }}
+                </ssh-pre>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card>
       </v-container>
     </v-window-item>
+
+    <v-window-item value="news">
+      <v-container fluid>
+        <v-row>
+          <v-col v-for="item in news" :key="item.title">
+            <InfoCard :title="item.title" :subTitle="item.subTitle" :image="item.image" :content="item.content">
+            </InfoCard>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-window-item>    
   </v-window>
 </template>
